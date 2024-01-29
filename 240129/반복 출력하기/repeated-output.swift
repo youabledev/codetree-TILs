@@ -1,1 +1,1 @@
-(Int(readLine()!)!...value).forEach { _ in print("12345^&*()_") }
+(1...Int(readLine()!)!).forEach { _ in print("12345^&*()_") }
