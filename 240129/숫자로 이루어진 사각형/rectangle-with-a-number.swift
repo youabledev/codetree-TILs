@@ -1,6 +1,12 @@
 let v = Int(readLine()!)!
-let a = 1
-(0...v-1).forEach { i in 
-    let result = ((v * i)..<(v * i + v)).map { String($0 % 9 + 1) }.joined(separator: " ")
-    print(result)
+
+var result = ""
+for i in 0..<v {
+    for j in 0..<v {
+        result += "\((v * i + j) % 9 + 1) "
+    }
+    result.removeLast()
+    result += "\n"
 }
+
+print(result)
