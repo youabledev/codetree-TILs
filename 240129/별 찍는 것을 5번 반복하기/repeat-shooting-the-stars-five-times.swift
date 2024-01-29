@@ -1,1 +1,1 @@
-(0...5).forEach { _ in print("**********") }
+(1...5).forEach { _ in print("**********") }
