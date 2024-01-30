@@ -1,1 +1,1 @@
-print(readLine()!.sorted().map{ String($0) }.joined(separator: ""))
+print(String(readLine()!.sorted()))
