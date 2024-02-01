@@ -13,7 +13,7 @@ class Node {
 class DoubleLinkedList {
     var head: Node?
     var tail: Node?
-    var count: Int = 0 /// 노드 갯수
+    var count: Int = 0
     
     func push_front(_ newData: Int) {
         let newNode = Node(data: newData)
@@ -26,7 +26,6 @@ class DoubleLinkedList {
         } else {
             head = newNode
             tail = newNode
-            //            newNode.prev = nil
         }
         
         self.count += 1
@@ -43,7 +42,6 @@ class DoubleLinkedList {
         } else {
             head = newNode
             tail = newNode
-            newNode.next = nil
         }
         
         self.count += 1
@@ -61,7 +59,7 @@ class DoubleLinkedList {
         } else {
             tmp.next?.prev = nil
             self.head = tmp.next
-            tmp.next = nil // 이전 head의 next 값을 지워 줌
+            tmp.next = nil
             self.count -= 1
             return tmp.data
         }
@@ -85,21 +83,13 @@ class DoubleLinkedList {
         }
     }
     
-    func size() -> Int? {
-        return self.count
-    }
+    func size() -> Int? { self.count }
     
-    func isEmpty() -> Bool {
-        return self.count == 0
-    }
+    func isEmpty() -> Bool { self.count == 0 }
     
-    func front() -> Int? {
-        return head?.data
-    }
+    func front() -> Int? { head?.data }
     
-    func back() -> Int? {
-        return tail?.data
-    }
+    func back() -> Int? { tail?.data }
 }
 
 enum DoubleLinkedListCommand: String {
@@ -114,24 +104,22 @@ enum DoubleLinkedListCommand: String {
 }
 
     
-    let n = Int(readLine()!)!
-    let list = DoubleLinkedList()
+let list = DoubleLinkedList()
 
-    (1...n).forEach { _ in
-        let v = readLine()!.split(separator: " ")
-        let command = DoubleLinkedListCommand(rawValue: String(v.first!))!
-        runCommand(command, Int(v.last ?? ""))
+(1...Int(readLine()!)!).forEach { _ in
+    let v = readLine()!.split(separator: " ")
+    let command = DoubleLinkedListCommand(rawValue: String(v.first!))!
+    runCommand(command, Int(v.last ?? ""))
+}
+func runCommand(_ command: DoubleLinkedListCommand, _ v: Int?) {
+    switch command {
+    case .push_back: list.push_back(v!)
+    case .push_front: list.push_front(v!)
+    case .pop_front: print(list.pop_front()!)
+    case .pop_back: print(list.pop_back()!)
+    case .size: print(list.size()!)
+    case .empty: list.isEmpty() ? print(1) : print(0)
+    case .front: print(list.front()!)
+    case .back: print(list.back()!)
     }
-    
-    func runCommand(_ command: DoubleLinkedListCommand, _ v: Int?) {
-        switch command {
-        case .push_back: list.push_back(v!)
-        case .push_front: list.push_front(v!)
-        case .pop_front: print(list.pop_front()!)
-        case .pop_back: print(list.pop_back()!)
-        case .size: print(list.size()!)
-        case .empty: list.isEmpty() ? print(1) : print(0)
-        case .front: print(list.front()!)
-        case .back: print(list.back()!)
-        }
-    }
+}
