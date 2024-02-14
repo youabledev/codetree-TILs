@@ -5,7 +5,7 @@ public class Main {
     public static int[][] grid = new int[MAX_N][MAX_N];
 
     public static int getNumOfGold(int rowS, int colS, int rowE, int colE) {
-        int numOfGold = 0
+        int numOfGold = 0;
 
         for(int row = rowS; row <= rowE; row++) {
             for(int col = colS; col <= colE; col++) {
@@ -20,7 +20,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int maxGold = 0;
 
-        n = sc.nextInt();
+        int n = sc.nextInt();
         for(int row = 0; row < n; row++)
             for(int col = 0; col < n; col++)
                 grid[row][col] = sc.nextInt();
